@@ -1,5 +1,7 @@
 package projetofinal;
 
+import java.util.Iterator;
+
 public class NormalWorker implements Employee {
 	
 	@Override
@@ -12,13 +14,16 @@ public class NormalWorker implements Employee {
 	public void AddItem(Item item) {
 		if (Check(item.code, item.quantity, item.expdate) == false) {
 		Employee.ItensList.add(item);
-	}}
+		}
+	}
 
 	@Override
 	public void DysplayItens() {
-		for (Item item : Employee.ItensList) {
-			System.out.println(item.code);
-		}}
+		Iterator<Item> it = ItensList.iterator();
+        	while (it.hasNext()) {
+            		System.out.println(it.next());
+        	}
+	}
 		
 	private boolean Check(String code, int quantity, ExpirationDate expdate){
 		
